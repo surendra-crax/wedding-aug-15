@@ -1,0 +1,1041 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aarav & Meera — Wedding Invitation</title>
+<meta name="description" content="With hearts full of joy, we invite you to the wedding of Aarav & Meera.">
+<!-- ============================================================
+     THE PAINTED GARDEN · v2 — traditional edition
+     Sections: envelope opening → framed invite + countdown →
+     scratch reveal (with celebration) → events (with timers) → farewell
+     Couple data: search "SITE_CONFIG" in the script to edit.
+     ============================================================ -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Great+Vibes&family=Tiro+Devanagari+Sanskrit&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ivory:#F7F2E9; --pearl:#EFE9DD; --champagne:#E4D3B0; --gold:#C7A96B; --gold-soft:#D8C295;
+  --blush:#E8C9C0; --rose:#C99A92; --sage:#A8B39A; --sage-d:#97A583; --olive:#7E8464; --terra:#C4795A;
+  --pine:#2E3B33; --ink:#4A4238; --ink-soft:#6B6154; --marigold:#E3A93C;
+  --sky1:#F3EEE4; --sky2:#E9E4D6;
+  --serif:'Cormorant Garamond',serif; --script:'Great Vibes',cursive;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html.lenis,html.lenis body{height:auto}
+.lenis.lenis-smooth{scroll-behavior:auto!important}
+body{font-family:var(--serif);color:var(--ink);background:var(--ivory);overflow-x:hidden;-webkit-font-smoothing:antialiased;cursor:none}
+@media (hover:none),(pointer:coarse){ body{cursor:auto} }
+::selection{background:var(--champagne);color:var(--ink)}
+
+/* ---------- living background ---------- */
+.sky{position:fixed;inset:0;z-index:-3;background:linear-gradient(180deg,var(--sky1) 0%,var(--sky2) 100%)}
+.grain{position:fixed;inset:-50%;z-index:-1;pointer-events:none;opacity:.5;mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0.72 0 0 0 0 0.67 0 0 0 0 0.58 0 0 0 0.05 0'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)'/%3E%3C/svg%3E");
+  animation:grainShift 9s steps(6) infinite}
+@keyframes grainShift{0%{transform:translate(0,0)}20%{transform:translate(-2%,1%)}40%{transform:translate(1%,-2%)}60%{transform:translate(-1%,2%)}80%{transform:translate(2%,1%)}100%{transform:translate(0,0)}}
+.rays{position:fixed;inset:-20% -20% auto auto;width:90vw;height:90vw;z-index:-2;pointer-events:none;
+  background:conic-gradient(from 200deg at 80% 10%,transparent 0deg,rgba(228,211,176,.30) 8deg,transparent 16deg,transparent 22deg,rgba(228,211,176,.18) 30deg,transparent 38deg,transparent 60deg,rgba(228,211,176,.22) 68deg,transparent 76deg);
+  filter:blur(14px);opacity:.8;transform-origin:80% 10%;animation:raySway 26s ease-in-out infinite alternate}
+@keyframes raySway{from{transform:rotate(-3deg)}to{transform:rotate(3.5deg)}}
+#fx{position:fixed;inset:0;z-index:60;pointer-events:none}
+
+/* ---------- layout ---------- */
+.chapter{position:relative;padding:clamp(4.5rem,10vh,8rem) clamp(1.1rem,5vw,3.5rem)}
+.inner{max-width:1020px;margin:0 auto;position:relative}
+.label{font-size:.72rem;letter-spacing:.42em;text-transform:uppercase;color:var(--olive);font-weight:600}
+.display{font-size:clamp(2.4rem,6.5vw,4.6rem);font-weight:400;font-style:italic;line-height:1.08}
+.script{font-family:var(--script);font-weight:400}
+.lead{font-size:clamp(1.02rem,1.6vw,1.2rem);line-height:1.85;color:var(--ink-soft);max-width:36ch;margin-inline:auto}
+.center{text-align:center}
+.paper{background:linear-gradient(160deg,#FBF7EE 0%,var(--ivory) 55%,#F1EADB 100%);
+  border:1px solid rgba(199,169,107,.35);border-radius:14px;
+  box-shadow:0 1px 2px rgba(74,66,56,.06),0 14px 40px -18px rgba(74,66,56,.28);position:relative}
+.paper::after{content:"";position:absolute;inset:7px;border:1px solid rgba(199,169,107,.28);border-radius:9px;pointer-events:none}
+.rv{opacity:0;transform:translateY(34px)}
+.rv.on{opacity:1;transform:none;transition:opacity 1.1s cubic-bezier(.22,.6,.2,1),transform 1.1s cubic-bezier(.22,.6,.2,1)}
+.rv.d1.on{transition-delay:.15s}.rv.d2.on{transition-delay:.3s}.rv.d3.on{transition-delay:.45s}.rv.d4.on{transition-delay:.6s}
+.btn{display:inline-flex;align-items:center;gap:.6rem;padding:.9rem 2rem;border-radius:999px;
+  border:1px solid var(--gold);background:linear-gradient(160deg,rgba(199,169,107,.16),rgba(199,169,107,.05));
+  color:var(--ink);font-family:var(--serif);font-size:.8rem;letter-spacing:.28em;text-transform:uppercase;
+  cursor:none;position:relative;overflow:hidden;transition:box-shadow .5s,transform .5s;text-decoration:none}
+@media (hover:none){.btn{cursor:pointer}}
+.btn::before{content:"";position:absolute;top:0;left:-70%;width:45%;height:100%;
+  background:linear-gradient(100deg,transparent,rgba(255,250,235,.75),transparent);transform:skewX(-20deg);transition:left .8s ease}
+.btn:hover::before{left:130%}
+.btn:hover{box-shadow:0 10px 28px -12px rgba(199,169,107,.65);transform:translateY(-2px)}
+.btn:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+
+/* =================== OPENING — sage envelope =================== */
+#opening{position:fixed;inset:0;z-index:100;display:grid;place-items:center;overflow:hidden;
+  background:linear-gradient(170deg,#B6C4A4 0%,#A9B996 55%,#9DAE8B 100%)}
+#opening::after{content:"";position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(90% 70% at 50% 42%,transparent 40%,rgba(90,105,75,.22) 100%)}
+.floater{position:absolute;pointer-events:none;will-change:transform;animation:floatDrift var(--dur,16s) ease-in-out var(--del,0s) infinite alternate;opacity:.9;z-index:1}
+@keyframes floatDrift{from{transform:translate(0,0) rotate(0)}to{transform:translate(var(--dx,20px),var(--dy,-26px)) rotate(var(--rot,14deg))}}
+.envScene{position:relative;z-index:2;text-align:center;width:min(430px,88vw)}
+.env{position:relative;margin:0 auto;width:min(340px,74vw);aspect-ratio:1/0.98;perspective:1200px;filter:drop-shadow(0 30px 34px rgba(60,72,48,.38))}
+.envBack,.envFront,.flap,.envCard{position:absolute;left:0;right:0}
+.envBack{top:0;bottom:0;background:linear-gradient(165deg,#9DAB89,#8F9E7B);border-radius:10px}
+.envCard{left:6%;right:6%;top:6%;height:86%;background:linear-gradient(170deg,#FBF7EC,#F2ECDB);border-radius:6px;
+  box-shadow:0 -8px 24px rgba(60,72,48,.25);transform:translateY(6%);display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding-top:12%;gap:.4rem;
+  transition:transform 1.3s cubic-bezier(.2,.7,.2,1) .9s}
+.envCard .gan{width:34%}
+.envCard .cNames{font-family:var(--script);font-size:clamp(1.5rem,6vw,2rem);color:#8a5f38}
+.envCard .cSub{font-size:.62rem;letter-spacing:.4em;text-transform:uppercase;color:#9a8a6a}
+.envFront{top:0;bottom:0;border-radius:10px;overflow:hidden}
+.envFront svg{width:100%;height:100%;display:block}
+.flap{top:0;height:56%;transform-origin:50% 0;transform:rotateX(0);transition:transform 1.5s cubic-bezier(.6,0,.2,1) .15s;z-index:5}
+.flap svg{width:100%;height:100%;display:block;filter:drop-shadow(0 6px 8px rgba(60,72,48,.2))}
+#opening.opened .flap{transform:rotateX(-178deg);z-index:1}
+#opening.opened .envCard{transform:translateY(-46%)}
+.seal2{position:absolute;left:50%;top:52%;transform:translate(-50%,-50%);z-index:6;width:clamp(76px,20vw,96px);height:clamp(76px,20vw,96px);
+  border-radius:50%;display:grid;place-items:center;border:none;cursor:none;font-family:var(--serif);
+  background:radial-gradient(circle at 35% 30%,#DCC79A,#C7A96B 55%,#A9894F);
+  box-shadow:inset 0 2px 6px rgba(255,248,230,.6),inset 0 -4px 8px rgba(120,94,50,.45),0 8px 20px rgba(70,84,55,.4);
+  transition:transform 1.1s ease,opacity 1s ease}
+.seal2 span{font-size:.9rem;letter-spacing:.35em;color:#5d4c2c}
+.seal2::before{content:"";position:absolute;inset:8px;border-radius:50%;border:1px solid rgba(93,76,44,.5)}
+.seal2 .sealPulse{position:absolute;inset:-13px;border-radius:50%;border:1px solid rgba(250,245,225,.8);animation:pulse 2.6s ease-out infinite}
+@keyframes pulse{0%{transform:scale(.75);opacity:0}30%{opacity:.9}100%{transform:scale(1.25);opacity:0}}
+#opening.opened .seal2{transform:translate(-50%,-50%) scale(.15) rotate(40deg);opacity:0}
+.openTitle{margin-top:2.6rem;font-family:var(--script);font-size:clamp(2.2rem,8vw,3.2rem);color:#41502F;text-shadow:0 1px 0 rgba(255,255,255,.4)}
+.openSub{font-style:italic;font-size:1rem;color:#4d5c3a;margin-top:.4rem;animation:hintFade 3.4s ease-in-out infinite}
+@keyframes hintFade{0%,100%{opacity:.6}50%{opacity:1}}
+.bloom{position:absolute;left:50%;top:46%;width:10px;height:10px;border-radius:50%;transform:translate(-50%,-50%);z-index:7;
+  background:radial-gradient(circle,rgba(255,250,232,.95),rgba(228,211,176,.4) 55%,transparent 75%);opacity:0;pointer-events:none}
+#opening.opened .bloom{animation:bloomOut 2.2s ease forwards 1.5s}
+@keyframes bloomOut{0%{opacity:0;transform:translate(-50%,-50%) scale(1)}25%{opacity:1}100%{opacity:0;transform:translate(-50%,-50%) scale(130)}}
+#skipOpen{position:absolute;bottom:1.5rem;right:1.7rem;z-index:8;background:none;border:none;color:#3f4d2f;
+  font-family:var(--serif);font-size:.72rem;letter-spacing:.34em;text-transform:uppercase;cursor:none;opacity:.75;padding:.6rem}
+#skipOpen:hover{opacity:1}
+#opening.gone{opacity:0;visibility:hidden;transition:opacity 1.3s ease,visibility 0s 1.3s}
+
+/* =================== HERO — framed royal card =================== */
+#hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2.6rem}
+.frameCard{position:relative;width:min(560px,94vw);aspect-ratio:520/860;filter:drop-shadow(0 30px 50px rgba(74,66,56,.25))}
+.frameCard > svg.frameArt{position:absolute;inset:0;width:100%;height:100%}
+.frameContent{position:absolute;inset:15% 10% 24%;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;text-align:center;gap:clamp(.3rem,1.2vh,.7rem)}
+.ganesha{width:clamp(64px,17%,96px)}
+.shloka{font-family:'Tiro Devanagari Sanskrit',var(--serif);font-size:clamp(.7rem,2.4vw,.85rem);color:#9b6c3f;letter-spacing:.12em}
+.invLine{font-size:clamp(.8rem,2.6vw,1rem);font-style:italic;color:var(--ink-soft);max-width:30ch;line-height:1.7}
+.heroNames{font-family:var(--script);font-size:clamp(2.6rem,11vw,4.4rem);line-height:1.15;color:#8a4a2e}
+.heroNames .with{display:block;font-size:.34em;font-family:var(--serif);font-style:italic;color:var(--gold);letter-spacing:.3em;text-transform:uppercase;margin:.2em 0}
+.hpar{font-size:clamp(.72rem,2.3vw,.9rem);line-height:1.8;color:var(--ink-soft)}
+.hpar b{font-weight:600;color:var(--ink)}
+.hdate{font-size:clamp(.95rem,3vw,1.25rem);font-style:italic;color:var(--ink);margin-top:.2rem}
+.hvenue{font-size:clamp(.7rem,2.2vw,.85rem);letter-spacing:.3em;text-transform:uppercase;color:var(--olive)}
+.heroQuote{font-style:italic;color:var(--ink-soft);font-size:clamp(1rem,1.5vw,1.15rem)}
+/* countdown */
+.countWrap{display:flex;flex-direction:column;align-items:center;gap:1rem}
+.countRing{position:relative;width:min(380px,86vw)}
+.countRing svg{width:100%;height:auto}
+.countNums{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;gap:clamp(.9rem,3vw,1.8rem)}
+.cn{text-align:center}
+.cn b{display:block;font-size:clamp(1.5rem,4.4vw,2.3rem);font-weight:500;font-style:italic}
+.cn i{font-style:normal;font-size:.6rem;letter-spacing:.32em;text-transform:uppercase;color:var(--olive)}
+.cn + .cn{border-left:1px solid rgba(199,169,107,.4);padding-left:clamp(.9rem,3vw,1.8rem)}
+.scrollPetal{width:20px;opacity:.8;animation:petalHint 3s ease-in-out infinite}
+@keyframes petalHint{0%{transform:translateY(0) rotate(0)}50%{transform:translateY(14px) rotate(18deg)}100%{transform:translateY(0) rotate(0)}}
+
+/* =================== MIST REVEAL =================== */
+#reveal .paper{max-width:620px;margin:0 auto;padding:clamp(2.2rem,5.5vw,3.6rem)}
+.revealStage{position:relative;margin-top:1.4rem;border-radius:10px;overflow:hidden}
+.revealUnder{padding:2.6rem 1.2rem;text-align:center;position:relative;background:
+  radial-gradient(120% 100% at 50% 0%,rgba(227,169,60,.14),transparent 55%),
+  linear-gradient(160deg,#FBF7EE,#F3ECDD)}
+.revealUnder .big{font-size:clamp(1.9rem,5vw,2.7rem);font-style:italic}
+.revealUnder .init{font-family:var(--script);font-size:clamp(2.6rem,6vw,3.6rem);color:var(--gold);margin-top:.4rem}
+.revealUnder .cornerP{position:absolute;width:56px;opacity:.85}
+.cp1{top:8px;left:8px}.cp2{bottom:8px;right:8px;transform:rotate(180deg)}
+#mistCanvas{position:absolute;inset:0;width:100%;height:100%;touch-action:none;cursor:none}
+.revealHint{margin-top:1rem;font-style:italic;color:var(--ink-soft);font-size:.95rem}
+
+/* =================== EVENTS =================== */
+.eventList{display:grid;gap:clamp(2rem,5vw,3rem);margin-top:3.2rem}
+.eventCard{border-radius:16px;overflow:hidden;position:relative;border:1px solid rgba(199,169,107,.4);
+  box-shadow:0 24px 60px -28px rgba(74,66,56,.38);transform-style:preserve-3d}
+.eventCard::before{content:"";position:absolute;inset:9px;border:1px solid rgba(120,100,60,.28);border-radius:10px;pointer-events:none;z-index:3}
+.eventCard .evArt{position:absolute;inset:0;z-index:0}
+.eventCard .evArt svg{width:100%;height:100%;display:block}
+.evBody{position:relative;z-index:1;padding:clamp(2rem,5vw,3.2rem);display:grid;gap:1rem;grid-template-columns:1fr auto;align-items:end}
+.evName{font-family:var(--script);font-size:clamp(2.2rem,6vw,3.4rem);line-height:1.1;font-weight:400}
+.evNote{font-style:italic;opacity:.8;max-width:38ch;font-size:1rem;line-height:1.7}
+.evMeta{display:flex;flex-wrap:wrap;gap:1.3rem;margin-top:1rem;font-size:.95rem}
+.evMeta div b{display:block;font-size:.62rem;letter-spacing:.3em;text-transform:uppercase;opacity:.65;font-weight:600;margin-bottom:.25rem}
+.dress{display:flex;gap:.45rem;align-items:center}
+.dress i{width:17px;height:17px;border-radius:50%;border:1px solid rgba(74,66,56,.3);display:inline-block}
+.evSide{display:flex;flex-direction:column;align-items:flex-end;gap:.9rem}
+.evTimer{font-size:.72rem;letter-spacing:.26em;text-transform:uppercase;border:1px solid rgba(120,100,60,.4);
+  border-radius:999px;padding:.5rem 1.1rem;background:rgba(255,252,240,.4)}
+.evTimer b{font-weight:600}
+@media (max-width:720px){.evBody{grid-template-columns:1fr}.evSide{align-items:flex-start}.evArt{opacity:.42}}
+.ev-haldi{background:linear-gradient(155deg,#F7EAC9,#F0DCA6 60%,#EAD290);color:#5d5030}
+.ev-mehendi{background:linear-gradient(155deg,#EDF0E2,#D9E0C6 60%,#C9D3B2);color:#4c5638}
+.ev-sangeet{background:linear-gradient(155deg,#4A4458,#5B5470 55%,#6E6584);color:#EFE9DD}
+.ev-sangeet .evTimer{background:rgba(30,28,44,.3);border-color:rgba(216,194,149,.5)}
+.ev-pheras{background:linear-gradient(155deg,#F3DFD8,#E9C9BE 60%,#E0B8AC);color:#6b4a40}
+
+/* =================== FOOTER =================== */
+.night{color:var(--pearl)}
+.night .label{color:var(--gold-soft)}
+#footer{min-height:88vh;display:grid;place-items:center;text-align:center;position:relative;overflow:hidden}
+.stars i{position:absolute;width:2px;height:2px;border-radius:50%;background:#EFE9DD;opacity:.7;animation:twinkle 4s ease-in-out infinite}
+@keyframes twinkle{0%,100%{opacity:.15}50%{opacity:.85}}
+.signature{font-family:var(--script);font-size:clamp(3rem,9vw,5.2rem);
+  background:linear-gradient(90deg,var(--pearl),var(--pearl)) no-repeat 0 0/0% 100%;
+  -webkit-background-clip:text;background-clip:text;color:rgba(239,233,221,.15)}
+.signature.write{animation:writeOn 3.6s cubic-bezier(.4,0,.3,1) forwards}
+@keyframes writeOn{to{background-size:100% 100%}}
+.blessing{margin-top:1.5rem;font-style:italic;color:rgba(239,233,221,.75);font-size:1.05rem}
+.footMono{width:88px;height:88px;margin:0 auto 1.4rem;opacity:.9}
+.credit{position:absolute;bottom:1.4rem;left:0;right:0;font-size:.68rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(239,233,221,.4)}
+
+/* =================== fixed ui =================== */
+#audioBtn{position:fixed;right:1.4rem;bottom:1.4rem;z-index:90;width:52px;height:52px;border-radius:50%;
+  border:1px solid rgba(199,169,107,.55);background:rgba(247,242,233,.72);backdrop-filter:blur(8px);
+  display:grid;place-items:center;cursor:none;transition:transform .4s}
+#audioBtn:hover{transform:scale(1.08)}
+#audioBtn .bars{display:flex;gap:3px;align-items:flex-end;height:16px}
+#audioBtn .bars i{width:2.5px;background:var(--gold);height:5px;border-radius:2px}
+#audioBtn.playing .bars i{animation:eq 1.2s ease-in-out infinite}
+#audioBtn.playing .bars i:nth-child(2){animation-delay:.15s}
+#audioBtn.playing .bars i:nth-child(3){animation-delay:.3s}
+#audioBtn.playing .bars i:nth-child(4){animation-delay:.45s}
+@keyframes eq{0%,100%{height:5px}50%{height:15px}}
+#cursor{position:fixed;z-index:200;width:9px;height:9px;border-radius:50%;pointer-events:none;
+  background:radial-gradient(circle,#E9D9B4,#C7A96B);box-shadow:0 0 10px rgba(199,169,107,.8);
+  transform:translate(-50%,-50%);transition:width .3s,height .3s;mix-blend-mode:multiply}
+#cursor.big{width:26px;height:26px;mix-blend-mode:normal;background:radial-gradient(circle,rgba(233,217,180,.35),rgba(199,169,107,.25));box-shadow:none;border:1px solid rgba(199,169,107,.7)}
+@media (hover:none),(pointer:coarse){#cursor{display:none}}
+.butterfly{position:fixed;z-index:70;pointer-events:none;will-change:transform;filter:drop-shadow(0 3px 5px rgba(74,66,56,.25))}
+.butterfly .wing{transform-origin:50% 50%;animation:flap .45s ease-in-out infinite alternate}
+@keyframes flap{from{transform:rotateY(16deg)}to{transform:rotateY(66deg)}}
+
+@media (prefers-reduced-motion:reduce){
+  .rays,.grain,.sealPulse,.scrollPetal,.floater{animation:none!important}
+  .rv{opacity:1!important;transform:none!important;transition:none!important}
+  .butterfly{display:none}
+  #fx{display:none}
+}
+</style>
+</head>
+<body>
+
+<div class="sky" id="sky"></div>
+<div class="rays" id="rays"></div>
+<div class="grain"></div>
+<canvas id="fx"></canvas>
+
+<!-- shared defs -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <filter id="wc" x="-30%" y="-30%" width="160%" height="160%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.032" numOctaves="3" seed="7" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="18"/>
+      <feGaussianBlur stdDeviation="0.5"/>
+    </filter>
+    <filter id="wcSoft" x="-40%" y="-40%" width="180%" height="180%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="3" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="34"/>
+      <feGaussianBlur stdDeviation="2"/>
+    </filter>
+    <linearGradient id="goldStroke" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#D8C295"/><stop offset=".5" stop-color="#C7A96B"/><stop offset="1" stop-color="#A9894F"/>
+    </linearGradient>
+    <radialGradient id="sunWash" cx="50%" cy="35%" r="70%">
+      <stop offset="0" stop-color="#F6E7BF"/><stop offset="1" stop-color="#EFD9A0" stop-opacity="0"/>
+    </radialGradient>
+    <!-- white damask floral spray for envelope -->
+    <g id="damask">
+      <g fill="none" stroke="#F6F3E6" stroke-width="3" stroke-linecap="round">
+        <path d="M0 0 q-10 -26 -34 -36 M0 0 q10 -26 34 -36 M0 0 q-30 -8 -52 8 M0 0 q30 -8 52 8 M0 0 q0 -40 0 -56"/>
+      </g>
+      <g fill="#F6F3E6">
+        <circle cx="0" cy="-62" r="8"/><circle cx="-8" cy="-56" r="6"/><circle cx="8" cy="-56" r="6"/><circle cx="0" cy="-52" r="5"/>
+        <circle cx="-38" cy="-40" r="6"/><circle cx="-30" cy="-44" r="4.6"/><circle cx="38" cy="-40" r="6"/><circle cx="30" cy="-44" r="4.6"/>
+        <circle cx="-56" cy="6" r="5.4"/><circle cx="56" cy="6" r="5.4"/>
+        <path d="M-20 -18 q10 -8 16 2 q-10 8 -16 -2z"/><path d="M20 -18 q-10 -8 -16 2 q10 8 16 -2z"/>
+        <path d="M-42 -18 q10 -4 12 6 q-10 4 -12 -6z"/><path d="M42 -18 q-10 -4 -12 6 q10 4 12 -6z"/>
+      </g>
+    </g>
+    <!-- small marigold -->
+    <g id="mg"><circle r="6" fill="#E3A93C"/><circle r="3.4" fill="#C97F2B"/></g>
+    <!-- jasmine -->
+    <g id="jas"><g fill="#F6F1E2"><circle cx="0" cy="-4" r="3.2"/><circle cx="4" cy="0" r="3.2"/><circle cx="0" cy="4" r="3.2"/><circle cx="-4" cy="0" r="3.2"/></g><circle r="1.8" fill="#E4D3B0"/></g>
+  </defs>
+</svg>
+
+<!-- ============ OPENING — envelope ============ -->
+<div id="opening" role="dialog" aria-label="Invitation envelope">
+  <div class="envScene">
+    <div class="env" id="env">
+      <div class="envBack"></div>
+      <div class="envCard" aria-hidden="true">
+        <svg class="gan" viewBox="0 0 120 130"><use href="#ganeshaArt"/></svg>
+        <div class="cNames">Aarav &amp; Meera</div>
+        <div class="cSub">24 · 11 · 2026</div>
+      </div>
+      <div class="envFront">
+        <svg viewBox="0 0 340 334" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M0 120 L170 226 L340 120 V324 q0 10 -10 10 H10 q-10 0 -10 -10 Z" fill="#97A583"/>
+          <path d="M0 120 L170 226 L340 120 V324 q0 10 -10 10 H10 q-10 0 -10 -10 Z" fill="none" stroke="#87957255" stroke-width="2"/>
+          <g transform="translate(170,296)"><use href="#damask"/></g>
+        </svg>
+      </div>
+      <div class="flap">
+        <svg viewBox="0 0 340 188" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M0 0 h340 v14 L178 186 q-8 8 -16 0 L0 14 Z" fill="#A2B08D"/>
+          <path d="M0 14 L162 186 M340 14 L178 186" stroke="#8d9c78" stroke-width="1.4" opacity=".6"/>
+          <g transform="translate(170,150) scale(.9)"><use href="#damask"/></g>
+        </svg>
+      </div>
+      <button class="seal2" id="sealBtn" aria-label="Open the invitation">
+        <span>A&nbsp;&amp;&nbsp;M</span><span class="sealPulse" aria-hidden="true"></span>
+      </button>
+      <div class="bloom" aria-hidden="true"></div>
+    </div>
+    <p class="openTitle">You're Invited</p>
+    <p class="openSub">Tap the seal to open your invitation</p>
+  </div>
+  <button id="skipOpen">Skip</button>
+</div>
+
+<!-- ============ HERO — framed invitation ============ -->
+<header class="chapter" id="hero" data-sky="dawn">
+  <div class="frameCard rv">
+    <svg class="frameArt" viewBox="0 0 520 860" preserveAspectRatio="none" aria-hidden="true">
+      <!-- ivory watercolor base -->
+      <rect width="520" height="860" rx="10" fill="#F7F1E4"/>
+      <g filter="url(#wcSoft)" opacity=".7">
+        <ellipse cx="140" cy="200" rx="150" ry="110" fill="#F2E9D4"/>
+        <ellipse cx="400" cy="420" rx="150" ry="130" fill="#EFE6CE"/>
+        <ellipse cx="200" cy="650" rx="180" ry="120" fill="#F3EBD8"/>
+      </g>
+      <rect x="6" y="6" width="508" height="848" rx="8" fill="none" stroke="#C7A96B" stroke-width="1.2" opacity=".7"/>
+      <!-- gold line-art florals top corners -->
+      <g fill="none" stroke="#C9A96E" stroke-width="1.1" opacity=".75">
+        <path d="M8 90 q40 -12 60 -46 M8 60 q30 -6 44 -30 M30 96 q26 6 50 -8"/>
+        <circle cx="72" cy="40" r="9"/><circle cx="60" cy="52" r="6"/><circle cx="84" cy="52" r="6"/>
+        <path d="M512 110 q-46 -14 -66 -52 M512 76 q-34 -8 -50 -34 M488 118 q-28 8 -54 -6"/>
+        <circle cx="442" cy="52" r="10"/><circle cx="430" cy="66" r="6"/><circle cx="456" cy="66" r="6"/>
+      </g>
+      <!-- bougainvillea clusters top -->
+      <g filter="url(#wc)">
+        <g fill="#D06A7E"><circle cx="120" cy="16" r="9"/><circle cx="136" cy="10" r="8"/><circle cx="152" cy="16" r="9"/><circle cx="128" cy="26" r="7"/><circle cx="146" cy="26" r="7"/></g>
+        <g fill="#C25671"><circle cx="330" cy="12" r="8"/><circle cx="346" cy="18" r="9"/><circle cx="362" cy="10" r="7"/><circle cx="352" cy="28" r="6"/></g>
+        <g fill="#DE8B9B"><circle cx="230" cy="10" r="7"/><circle cx="246" cy="16" r="8"/><circle cx="262" cy="10" r="7"/></g>
+        <g fill="#7E8A64"><path d="M112 30 q-12 12 -4 26 q14 -6 4 -26z"/><path d="M366 26 q12 12 4 26 q-14 -6 -4 -26z"/><path d="M240 24 q-4 14 6 22 q8 -12 -6 -22z"/></g>
+        <!-- blue sprig right -->
+        <g fill="#8E9BB8"><circle cx="480" cy="150" r="6"/><circle cx="490" cy="162" r="5"/><circle cx="474" cy="164" r="5"/><circle cx="484" cy="176" r="4.4"/></g>
+      </g>
+      <!-- palms + willows sides -->
+      <g filter="url(#wc)">
+        <g stroke="#5F7050" stroke-width="3" fill="none" stroke-linecap="round">
+          <path d="M6 300 q40 -8 62 -40 M6 316 q36 2 60 -18 M6 288 q28 -18 34 -48"/>
+          <path d="M514 470 q-42 -8 -64 -42 M514 486 q-38 2 -62 -18 M514 456 q-30 -18 -36 -50"/>
+        </g>
+        <g stroke="#8A9478" stroke-width="1.8" fill="none" stroke-linecap="round" opacity=".5">
+          <path d="M10 360 q6 44 -2 78 M26 352 q10 48 2 86 M42 344 q12 50 6 92"/>
+          <path d="M510 560 q-6 44 2 78 M494 552 q-10 48 -2 86 M478 544 q-12 50 -6 92"/>
+        </g>
+        <g fill="#8A9478" opacity=".4"><ellipse cx="26" cy="566" rx="32" ry="46"/><ellipse cx="14" cy="602" rx="24" ry="36"/></g>
+        <g fill="#8A9478" opacity=".35"><ellipse cx="498" cy="262" rx="26" ry="40"/></g>
+        <!-- side florals bottom -->
+        <g fill="#DE8B9B"><circle cx="26" cy="700" r="8"/><circle cx="40" cy="712" r="7"/><circle cx="16" cy="716" r="6"/></g>
+        <g fill="#F3EEE0"><circle cx="60" cy="726" r="6"/><circle cx="486" cy="700" r="7"/><circle cx="470" cy="712" r="6"/></g>
+        <g fill="#95A3C0"><circle cx="498" cy="676" r="5.4"/><circle cx="508" cy="688" r="4.6"/></g>
+      </g>
+      <!-- toran across the top -->
+      <g>
+        <path d="M40 60 Q260 118 480 60" fill="none" stroke="#C9A24B" stroke-width="2.6"/>
+        <g>
+          <use href="#mg" x="80" y="70"/><use href="#mg" x="130" y="82"/><use href="#mg" x="180" y="90"/>
+          <use href="#mg" x="230" y="95"/><use href="#mg" x="280" y="95"/><use href="#mg" x="330" y="90"/>
+          <use href="#mg" x="380" y="82"/><use href="#mg" x="430" y="70"/>
+        </g>
+        <g>
+          <use href="#jas" x="105" y="78"/><use href="#jas" x="155" y="88"/><use href="#jas" x="205" y="94"/>
+          <use href="#jas" x="255" y="97"/><use href="#jas" x="305" y="94"/><use href="#jas" x="355" y="88"/><use href="#jas" x="405" y="78"/>
+        </g>
+        <g stroke="#C9A24B" stroke-width="1.2"><line x1="120" y1="86" x2="120" y2="104"/><line x1="400" y1="86" x2="400" y2="104"/></g>
+        <use href="#mg" x="120" y="108"/><use href="#mg" x="400" y="108"/>
+      </g>
+      <!-- bottom: trellis + carpet + lanterns -->
+      <g>
+        <rect x="10" y="708" width="500" height="10" fill="#F2EEE2" stroke="#D8CFB8" stroke-width="1"/>
+        <g stroke="#EFEADB" stroke-width="5">
+          <line x1="20" y1="718" x2="60" y2="756"/><line x1="60" y1="718" x2="100" y2="756"/><line x1="100" y1="718" x2="140" y2="756"/>
+          <line x1="140" y1="718" x2="180" y2="756"/><line x1="180" y1="718" x2="220" y2="756"/><line x1="220" y1="718" x2="260" y2="756"/>
+          <line x1="260" y1="718" x2="300" y2="756"/><line x1="300" y1="718" x2="340" y2="756"/><line x1="340" y1="718" x2="380" y2="756"/>
+          <line x1="380" y1="718" x2="420" y2="756"/><line x1="420" y1="718" x2="460" y2="756"/><line x1="460" y1="718" x2="500" y2="756"/>
+          <line x1="60" y1="718" x2="20" y2="756"/><line x1="100" y1="718" x2="60" y2="756"/><line x1="140" y1="718" x2="100" y2="756"/>
+          <line x1="180" y1="718" x2="140" y2="756"/><line x1="220" y1="718" x2="180" y2="756"/><line x1="260" y1="718" x2="220" y2="756"/>
+          <line x1="300" y1="718" x2="260" y2="756"/><line x1="340" y1="718" x2="300" y2="756"/><line x1="380" y1="718" x2="340" y2="756"/>
+          <line x1="420" y1="718" x2="380" y2="756"/><line x1="460" y1="718" x2="420" y2="756"/><line x1="500" y1="718" x2="460" y2="756"/>
+        </g>
+        <rect x="10" y="752" width="500" height="8" fill="#F2EEE2" stroke="#D8CFB8" stroke-width="1"/>
+        <!-- carpet -->
+        <g filter="url(#wc)">
+          <rect x="60" y="768" width="400" height="86" rx="4" fill="#B4574E"/>
+          <rect x="72" y="778" width="376" height="66" rx="3" fill="none" stroke="#E8C9A0" stroke-width="2"/>
+          <ellipse cx="260" cy="811" rx="90" ry="26" fill="#D9836F"/>
+          <ellipse cx="260" cy="811" rx="56" ry="16" fill="#EAC9A2"/>
+          <ellipse cx="260" cy="811" rx="26" ry="9" fill="#B4574E"/>
+          <g fill="#EAC9A2"><circle cx="100" cy="790" r="4"/><circle cx="420" cy="790" r="4"/><circle cx="100" cy="832" r="4"/><circle cx="420" cy="832" r="4"/></g>
+        </g>
+        <!-- lanterns -->
+        <g filter="url(#wc)">
+          <g transform="translate(96,688)">
+            <circle cx="22" cy="34" r="20" fill="#F6E7BF" opacity=".55"/>
+            <rect x="19" y="0" width="6" height="6" rx="2" fill="#8a5f28"/>
+            <path d="M10 18 q12 -16 24 0 z" fill="#C08A3E" stroke="#8a5f28" stroke-width="1.2"/>
+            <path d="M8 18 h28 l-4 34 h-20 z" fill="#D9A855" stroke="#8a5f28" stroke-width="1.2"/>
+            <path d="M14 22 h16 l-2.6 26 h-10.8 z" fill="#F6E7BF"/>
+            <rect x="10" y="52" width="24" height="5" rx="2" fill="#C08A3E" stroke="#8a5f28" stroke-width="1"/>
+            <path d="M20 57 h4 v6 h-4 z" fill="#8a5f28"/>
+          </g>
+          <g transform="translate(384,694) scale(.88)">
+            <circle cx="22" cy="34" r="20" fill="#F6E7BF" opacity=".55"/>
+            <rect x="19" y="0" width="6" height="6" rx="2" fill="#8a5f28"/>
+            <path d="M10 18 q12 -16 24 0 z" fill="#C08A3E" stroke="#8a5f28" stroke-width="1.2"/>
+            <path d="M8 18 h28 l-4 34 h-20 z" fill="#D9A855" stroke="#8a5f28" stroke-width="1.2"/>
+            <path d="M14 22 h16 l-2.6 26 h-10.8 z" fill="#F6E7BF"/>
+            <rect x="10" y="52" width="24" height="5" rx="2" fill="#C08A3E" stroke="#8a5f28" stroke-width="1"/>
+            <path d="M20 57 h4 v6 h-4 z" fill="#8a5f28"/>
+          </g>
+          <!-- flower baskets -->
+          <g transform="translate(52,806)"><path d="M0 20 q14 -12 28 0 l-4 18 h-20 z" fill="#C8A97E"/><g fill="#95A3C0"><circle cx="6" cy="12" r="5"/><circle cx="16" cy="8" r="5.4"/><circle cx="26" cy="12" r="5"/></g><g fill="#F3EEE0"><circle cx="11" cy="16" r="3.4"/><circle cx="21" cy="16" r="3.4"/></g></g>
+          <g transform="translate(438,800)"><path d="M0 20 q14 -12 28 0 l-4 18 h-20 z" fill="#C8A97E"/><g fill="#D06A7E"><circle cx="6" cy="12" r="5"/><circle cx="16" cy="8" r="5.4"/><circle cx="26" cy="12" r="5"/></g><g fill="#F3EEE0"><circle cx="11" cy="16" r="3.4"/><circle cx="21" cy="16" r="3.4"/></g></g>
+        </g>
+      </g>
+    </svg>
+    <div class="frameContent">
+      <svg class="ganesha" viewBox="0 0 120 130" aria-label="Lord Ganesha">
+        <g id="ganeshaArt">
+          <!-- halo -->
+          <circle cx="60" cy="52" r="34" fill="none" stroke="#E3A93C" stroke-width="1.6" opacity=".7"/>
+          <g stroke="#E3A93C" stroke-width="1.2" opacity=".6">
+            <line x1="60" y1="12" x2="60" y2="20"/><line x1="88" y1="24" x2="83" y2="30"/><line x1="32" y1="24" x2="37" y2="30"/>
+            <line x1="94" y1="52" x2="87" y2="52"/><line x1="26" y1="52" x2="33" y2="52"/>
+          </g>
+          <!-- crown -->
+          <path d="M44 30 q16 -20 32 0 l-4 10 q-12 -8 -24 0 z" fill="#D9822B" stroke="#B05E1A" stroke-width="1.4"/>
+          <path d="M56 16 q4 -8 8 0 l-2 8 h-4 z" fill="#E3A93C" stroke="#B05E1A"/>
+          <!-- ears -->
+          <path d="M30 46 q-14 2 -12 18 q2 14 16 12 q4 -2 4 -8 z" fill="#F0BFA0" stroke="#C4795A" stroke-width="1.4"/>
+          <path d="M90 46 q14 2 12 18 q-2 14 -16 12 q-4 -2 -4 -8 z" fill="#F0BFA0" stroke="#C4795A" stroke-width="1.4"/>
+          <!-- head -->
+          <ellipse cx="60" cy="52" rx="22" ry="20" fill="#F5CBA9" stroke="#C4795A" stroke-width="1.6"/>
+          <!-- tilak -->
+          <path d="M60 38 v10 M56 40 v7 M64 40 v7" stroke="#C0392B" stroke-width="1.8" stroke-linecap="round"/>
+          <!-- eyes -->
+          <path d="M50 52 q3 -3 6 0 M64 52 q3 -3 6 0" stroke="#7a4a2e" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+          <!-- trunk -->
+          <path d="M60 60 q2 12 -8 16 q-10 4 -8 12 q2 8 12 6" fill="none" stroke="#C4795A" stroke-width="7" stroke-linecap="round"/>
+          <path d="M60 60 q2 12 -8 16 q-10 4 -8 12 q2 8 12 6" fill="none" stroke="#F5CBA9" stroke-width="4" stroke-linecap="round"/>
+          <!-- tusk -->
+          <path d="M68 64 q8 4 6 12" stroke="#FBF4E4" stroke-width="4" fill="none" stroke-linecap="round"/>
+          <!-- body -->
+          <path d="M38 96 q-2 -22 22 -24 q24 2 22 24 l-2 12 h-40 z" fill="#F5CBA9" stroke="#C4795A" stroke-width="1.6"/>
+          <path d="M42 96 q18 -12 36 0 l-2 12 h-32 z" fill="#E8963C" stroke="#B05E1A" stroke-width="1.4"/>
+          <!-- arms -->
+          <path d="M38 84 q-12 -2 -14 -14" stroke="#C4795A" stroke-width="5" fill="none" stroke-linecap="round"/>
+          <path d="M82 84 q12 -2 14 -14" stroke="#C4795A" stroke-width="5" fill="none" stroke-linecap="round"/>
+          <circle cx="23" cy="66" r="4.4" fill="#F5CBA9" stroke="#C4795A" stroke-width="1.2"/>
+          <circle cx="97" cy="66" r="4.4" fill="#F5CBA9" stroke="#C4795A" stroke-width="1.2"/>
+          <!-- necklace -->
+          <path d="M46 78 q14 10 28 0" stroke="#E3A93C" stroke-width="2.4" fill="none"/>
+          <circle cx="60" cy="84" r="2.4" fill="#C0392B"/>
+          <!-- base -->
+          <path d="M30 112 q30 -10 60 0 q4 6 -2 8 h-56 q-6 -2 -2 -8z" fill="#D9822B" stroke="#B05E1A" stroke-width="1.4"/>
+          <g fill="#E3A93C"><circle cx="42" cy="117" r="2"/><circle cx="60" cy="118" r="2"/><circle cx="78" cy="117" r="2"/></g>
+        </g>
+      </svg>
+      <p class="shloka">॥ श्री गणेशाय नमः ॥</p>
+      <p class="invLine">We request the honour of your gracious presence on the auspicious occasion of the wedding of</p>
+      <h1 class="heroNames">Aarav
+        <span class="with">weds</span>
+      Meera</h1>
+      <p class="hpar">Son of <b>Mrs. Kavita &amp; Mr. Rajesh Sharma</b><br>
+         Daughter of <b>Mrs. Lakshmi &amp; Mr. Anand Iyer</b></p>
+      <div style="width:120px;height:1px;background:linear-gradient(90deg,transparent,#C7A96B,transparent);margin:.3rem 0"></div>
+      <p class="hdate">Tuesday · 24 November 2026</p>
+      <p class="hvenue">Udaan Bagh Palace · Udaipur</p>
+    </div>
+  </div>
+
+  <p class="heroQuote rv d1">“Two gardens, one season of bloom.”</p>
+
+  <div class="countWrap rv d2">
+    <div class="countRing">
+      <svg viewBox="0 0 360 130" aria-hidden="true">
+        <g filter="url(#wc)" fill="none" stroke-linecap="round">
+          <path d="M12 100 Q60 30 180 24 Q300 30 348 100" stroke="#8A9478" stroke-width="2.6" opacity=".8"/>
+        </g>
+        <g fill="#A8B39A" filter="url(#wc)" opacity=".85">
+          <path d="M40 84 q16 -6 24 6 q-16 8 -24 -6z"/><path d="M78 58 q16 -8 26 2 q-14 10 -26 -2z"/>
+          <path d="M296 84 q-16 -6 -24 6 q16 8 24 -6z"/><path d="M258 58 q-16 -8 -26 2 q14 10 26 -2z"/>
+        </g>
+        <use href="#mg" x="120" y="42"/><use href="#mg" x="240" y="42"/>
+        <use href="#jas" x="150" y="32"/><use href="#jas" x="210" y="32"/><use href="#mg" x="180" y="26"/>
+      </svg>
+      <div class="countNums" id="countdown" role="timer" aria-label="Countdown to the wedding">
+        <div class="cn"><b id="cd-d">—</b><i>days</i></div>
+        <div class="cn"><b id="cd-h">—</b><i>hours</i></div>
+        <div class="cn"><b id="cd-m">—</b><i>mins</i></div>
+        <div class="cn"><b id="cd-s">—</b><i>secs</i></div>
+      </div>
+    </div>
+    <p class="label">until the celebrations begin</p>
+  </div>
+
+  <svg class="scrollPetal" viewBox="0 0 20 26" aria-hidden="true">
+    <path d="M10 1 q9 8 0 24 q-9 -16 0 -24z" fill="#E8C9C0" stroke="#C99A92" stroke-width=".8"/>
+  </svg>
+</header>
+
+<!-- ============ MIST REVEAL ============ -->
+<section class="chapter" id="reveal" data-sky="morning" aria-labelledby="revealH">
+  <div class="inner center">
+    <p class="label rv">A secret beneath the mist</p>
+    <h2 class="display rv d1" id="revealH">Wipe the morning away</h2>
+    <div class="paper rv d2">
+      <p class="lead" style="max-width:42ch">Every garden keeps one secret till the sun is up. Brush the mist aside with your fingertip.</p>
+      <div class="revealStage">
+        <div class="revealUnder">
+          <svg class="cornerP cp1" viewBox="0 0 60 60" aria-hidden="true"><g fill="none" stroke="#C9A96E" stroke-width="1.4"><path d="M2 58 q4 -40 40 -50 M2 40 q6 -22 24 -30"/><circle cx="48" cy="6" r="4"/></g><use href="#mg" x="14" y="46"/></svg>
+          <svg class="cornerP cp2" viewBox="0 0 60 60" aria-hidden="true"><g fill="none" stroke="#C9A96E" stroke-width="1.4"><path d="M2 58 q4 -40 40 -50 M2 40 q6 -22 24 -30"/><circle cx="48" cy="6" r="4"/></g><use href="#mg" x="14" y="46"/></svg>
+          <p class="label">Save the date</p>
+          <p class="big">24 · 11 · 2026</p>
+          <p style="font-style:italic;color:var(--ink-soft);margin-top:.4rem">Udaan Bagh Palace, Udaipur</p>
+          <p class="init">A &amp; M</p>
+        </div>
+        <canvas id="mistCanvas" aria-label="Mist layer — wipe to reveal the date"></canvas>
+      </div>
+      <p class="revealHint" id="revealHint">— trace your finger across the mist —</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ EVENTS ============ -->
+<section class="chapter" id="events" data-sky="golden" aria-labelledby="evH">
+  <div class="inner">
+    <div class="center">
+      <p class="label rv">Golden hour</p>
+      <h2 class="display rv d1" id="evH">Four invitations, one garden</h2>
+      <p class="lead rv d2">Each celebration blooms in its own corner of the estate.</p>
+    </div>
+    <div class="eventList">
+
+      <article class="eventCard ev-haldi" data-ev="0" aria-label="Haldi ceremony">
+        <div class="evArt" aria-hidden="true"><svg viewBox="0 0 900 420" preserveAspectRatio="xMidYMid slice">
+          <g filter="url(#wcSoft)"><circle cx="760" cy="70" r="130" fill="url(#sunWash)"/><ellipse cx="120" cy="400" rx="240" ry="90" fill="#EEDD9E" opacity=".55"/></g>
+          <g filter="url(#wc)" opacity=".85">
+            <path d="M40 420 q16 -90 -6 -160 q52 56 40 160z" fill="#D9B65A"/>
+            <path d="M865 30 q-40 60 -20 120" stroke="#C9A24B" stroke-width="2" fill="none"/>
+            <g><use href="#mg" x="828" y="330"/><use href="#mg" x="852" y="352"/><use href="#mg" x="806" y="352"/><use href="#mg" x="828" y="372"/></g>
+            <g><use href="#mg" x="120" y="120"/><use href="#jas" x="180" y="90"/><use href="#mg" x="90" y="180"/></g>
+          </g>
+        </svg></div>
+        <div class="evBody">
+          <div>
+            <p class="label" style="color:inherit;opacity:.7">First light · the turmeric morning</p>
+            <h3 class="evName">Haldi</h3>
+            <p class="evNote">Sunlit laughter, marigold garlands, and a blessing of gold on the skin.</p>
+            <div class="evMeta">
+              <div><b>Date</b>Sunday · 22 Nov 2026</div>
+              <div><b>Time</b>10:00 AM</div>
+              <div><b>Where</b>The Marigold Courtyard</div>
+              <div><b>Dress</b><span class="dress"><i style="background:#EAD290"></i><i style="background:#F3EEE0"></i><i style="background:#D9B65A"></i> shades of morning</span></div>
+            </div>
+          </div>
+          <div class="evSide">
+            <span class="evTimer" data-timer="0">in <b>—</b> days</span>
+            <a class="btn" data-ics="0" href="#" aria-label="Add Haldi to calendar">Add to calendar</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="eventCard ev-mehendi" data-ev="1" aria-label="Mehendi ceremony">
+        <div class="evArt" aria-hidden="true"><svg viewBox="0 0 900 420" preserveAspectRatio="xMidYMid slice">
+          <g filter="url(#wc)" opacity=".8">
+            <path d="M-10 60 q120 30 170 140 q30 70 10 220" fill="none" stroke="#7E8464" stroke-width="5"/>
+            <path d="M910 30 q-140 40 -180 160 q-22 66 -6 230" fill="none" stroke="#8A9478" stroke-width="4"/>
+            <g fill="#A8B39A"><path d="M120 130 q26 -6 36 16 q-26 8 -36 -16z"/><path d="M160 210 q26 -4 34 18 q-26 6 -34 -18z"/><path d="M760 150 q-26 -6 -36 16 q26 8 36 -16z"/><path d="M726 240 q-26 -4 -34 18 q26 6 34 -18z"/></g>
+            <g fill="none" stroke="#7E8464" stroke-width="1.6"><circle cx="450" cy="90" r="26"/><circle cx="450" cy="90" r="16"/><path d="M450 56 v-14 M450 124 v14 M416 90 h-14 M484 90 h14"/></g>
+            <g><use href="#jas" x="260" y="330"/><use href="#jas" x="640" y="330"/><use href="#jas" x="450" y="360"/></g>
+          </g>
+        </svg></div>
+        <div class="evBody">
+          <div>
+            <p class="label" style="color:inherit;opacity:.7">Noon shade · the henna garden</p>
+            <h3 class="evName">Mehendi</h3>
+            <p class="evNote">Vines drawn on hands beneath real ones — with sherbet, swings and songs.</p>
+            <div class="evMeta">
+              <div><b>Date</b>Sunday · 22 Nov 2026</div>
+              <div><b>Time</b>4:00 PM</div>
+              <div><b>Where</b>The Neem Walk</div>
+              <div><b>Dress</b><span class="dress"><i style="background:#C9D3B2"></i><i style="background:#7E8464"></i><i style="background:#F3EEE0"></i> garden greens</span></div>
+            </div>
+          </div>
+          <div class="evSide">
+            <span class="evTimer" data-timer="1">in <b>—</b> days</span>
+            <a class="btn" data-ics="1" href="#" aria-label="Add Mehendi to calendar">Add to calendar</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="eventCard ev-sangeet" data-ev="2" aria-label="Sangeet night">
+        <div class="evArt" aria-hidden="true"><svg viewBox="0 0 900 420" preserveAspectRatio="xMidYMid slice">
+          <g filter="url(#wcSoft)"><ellipse cx="450" cy="0" rx="500" ry="160" fill="#3E3950" opacity=".65"/></g>
+          <g filter="url(#wc)">
+            <path d="M60 40 q390 120 780 0" fill="none" stroke="#C7A96B" stroke-width="2" opacity=".8"/>
+            <g fill="#EFE9DD"><circle cx="150" cy="72" r="3"/><circle cx="290" cy="94" r="3"/><circle cx="450" cy="100" r="3.4"/><circle cx="610" cy="94" r="3"/><circle cx="750" cy="72" r="3"/></g>
+            <g stroke="#C7A96B" stroke-width="1.2" opacity=".85"><path d="M290 96 v34"/><path d="M450 102 v42"/><path d="M610 96 v34"/></g>
+            <g fill="#E9D9B4"><path d="M290 136 l4 8 h-8z"/><path d="M450 150 l5 9 h-10z"/><path d="M610 136 l4 8 h-8z"/></g>
+            <g fill="#F6E7BF" opacity=".5"><circle cx="120" cy="300" r="26"/><circle cx="800" cy="260" r="34"/><circle cx="680" cy="350" r="18"/></g>
+          </g>
+        </svg></div>
+        <div class="evBody">
+          <div>
+            <p class="label" style="color:inherit;opacity:.7">Dusk · lanterns &amp; crystal</p>
+            <h3 class="evName">Sangeet</h3>
+            <p class="evNote">The garden dresses in bokeh and strings — bring your best twirl.</p>
+            <div class="evMeta">
+              <div><b>Date</b>Monday · 23 Nov 2026</div>
+              <div><b>Time</b>7:30 PM</div>
+              <div><b>Where</b>The Crystal Terrace</div>
+              <div><b>Dress</b><span class="dress"><i style="background:#5B5470"></i><i style="background:#C7A96B"></i><i style="background:#EFE9DD"></i> twilight &amp; gold</span></div>
+            </div>
+          </div>
+          <div class="evSide">
+            <span class="evTimer" data-timer="2">in <b>—</b> days</span>
+            <a class="btn" data-ics="2" href="#" aria-label="Add Sangeet to calendar" style="border-color:var(--gold-soft);color:#EFE9DD">Add to calendar</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="eventCard ev-pheras" data-ev="3" aria-label="Wedding ceremony">
+        <div class="evArt" aria-hidden="true"><svg viewBox="0 0 900 420" preserveAspectRatio="xMidYMid slice">
+          <g filter="url(#wcSoft)"><ellipse cx="450" cy="420" rx="400" ry="120" fill="#E4B7A6" opacity=".5"/></g>
+          <g filter="url(#wc)">
+            <path d="M330 420 V190 q0 -110 120 -110 q120 0 120 110 v230" fill="none" stroke="url(#goldStroke)" stroke-width="6"/>
+            <path d="M330 220 q120 -60 240 0" fill="none" stroke="#C9A24B" stroke-width="2.6"/>
+            <g><use href="#mg" x="360" y="212"/><use href="#mg" x="405" y="196"/><use href="#mg" x="450" y="190"/><use href="#mg" x="495" y="196"/><use href="#mg" x="540" y="212"/></g>
+            <g fill="#E8C9C0"><circle cx="340" cy="300" r="8"/><circle cx="560" cy="300" r="8"/><circle cx="330" cy="330" r="6"/><circle cx="570" cy="330" r="6"/></g>
+            <g><use href="#jas" x="352" y="318"/><use href="#jas" x="548" y="318"/></g>
+            <g fill="#C99A92" opacity=".9"><path d="M60 380 q30 -40 70 -30 q-20 44 -70 30z"/><path d="M840 380 q-30 -40 -70 -30 q20 44 70 30z"/></g>
+          </g>
+        </svg></div>
+        <div class="evBody">
+          <div>
+            <p class="label" style="color:inherit;opacity:.7">Golden hour · beneath the arch</p>
+            <h3 class="evName">The Pheras</h3>
+            <p class="evNote">Seven rounds while the sun sets rose-gold — the garden's whole reason.</p>
+            <div class="evMeta">
+              <div><b>Date</b>Tuesday · 24 Nov 2026</div>
+              <div><b>Time</b>7:00 PM onwards</div>
+              <div><b>Where</b>The Rose Arch Lawn</div>
+              <div><b>Dress</b><span class="dress"><i style="background:#E0B8AC"></i><i style="background:#C7A96B"></i><i style="background:#F3EEE0"></i> dusty rose &amp; ivory</span></div>
+            </div>
+          </div>
+          <div class="evSide">
+            <span class="evTimer" data-timer="3">in <b>—</b> days</span>
+            <a class="btn" data-ics="3" href="#" aria-label="Add wedding to calendar">Add to calendar</a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="chapter night" id="footer" data-sky="night">
+  <div class="stars" id="stars" aria-hidden="true"></div>
+  <div class="inner center">
+    <svg class="footMono" viewBox="0 0 120 120" aria-hidden="true">
+      <circle cx="60" cy="60" r="55" fill="none" stroke="#C7A96B" stroke-width="1.2"/>
+      <circle cx="60" cy="60" r="48" fill="none" stroke="#C7A96B" stroke-width=".6" stroke-dasharray="2 4"/>
+      <text x="60" y="72" text-anchor="middle" font-family="Cormorant Garamond,serif" font-style="italic" font-size="36" fill="#EFE9DD">A<tspan fill="#C7A96B" font-size="26">&#8202;&amp;&#8202;</tspan>M</text>
+    </svg>
+    <p class="label rv" style="color:var(--gold-soft)">Until the garden gates close</p>
+    <p class="signature" id="signature">Aarav &amp; Meera</p>
+    <p class="blessing rv d2">“May every guest leave with pockets full of petals and a heart full of light.”</p>
+    <p class="blessing rv d3" style="font-size:.9rem;opacity:.7">24 · 11 · 2026 — Udaipur · #AaravAndMeera</p>
+    <p class="credit">The Painted Garden · crafted with love</p>
+  </div>
+</footer>
+
+<!-- fixed UI -->
+<button id="audioBtn" aria-label="Toggle ambient music" aria-pressed="false">
+  <span class="bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+</button>
+<div id="cursor" aria-hidden="true"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script>
+/* ============ SITE_CONFIG — edit couple details here ============ */
+const SITE_CONFIG = {
+  couple: "Aarav & Meera",
+  weddingISO: "2026-11-24T19:00:00+05:30",
+  events: [
+    {title:"Haldi — Aarav & Meera",   iso:"2026-11-22T10:00:00+05:30", start:"20261122T100000", end:"20261122T130000", loc:"The Marigold Courtyard, Udaan Bagh Palace, Udaipur"},
+    {title:"Mehendi — Aarav & Meera", iso:"2026-11-22T16:00:00+05:30", start:"20261122T160000", end:"20261122T200000", loc:"The Neem Walk, Udaan Bagh Palace, Udaipur"},
+    {title:"Sangeet — Aarav & Meera", iso:"2026-11-23T19:30:00+05:30", start:"20261123T193000", end:"20261124T000000", loc:"The Crystal Terrace, Udaan Bagh Palace, Udaipur"},
+    {title:"Wedding — Aarav & Meera", iso:"2026-11-24T19:00:00+05:30", start:"20261124T190000", end:"20261125T000000", loc:"The Rose Arch Lawn, Udaan Bagh Palace, Udaipur"}
+  ]
+};
+
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const isTouch = window.matchMedia('(hover: none), (pointer: coarse)').matches;
+gsap.registerPlugin(ScrollTrigger);
+
+let lenis = null;
+if (!reduceMotion) {
+  lenis = new Lenis({ duration: 1.35, smoothWheel: true });
+  lenis.on('scroll', ScrollTrigger.update);
+  gsap.ticker.add(t => lenis.raf(t * 1000));
+  gsap.ticker.lagSmoothing(0);
+}
+
+/* ============ opening: floating mini flowers + butterflies ============ */
+const FLOWER_SVGS = [
+  '<svg viewBox="0 0 20 20" width="__S__"><g fill="#E58BA5"><circle cx="10" cy="5" r="4"/><circle cx="15" cy="10" r="4"/><circle cx="10" cy="15" r="4"/><circle cx="5" cy="10" r="4"/></g><circle cx="10" cy="10" r="2.6" fill="#F4D35E"/></svg>',
+  '<svg viewBox="0 0 20 20" width="__S__"><g fill="#F4D35E"><circle cx="10" cy="4" r="3.4"/><circle cx="16" cy="8" r="3.4"/><circle cx="14" cy="15" r="3.4"/><circle cx="6" cy="15" r="3.4"/><circle cx="4" cy="8" r="3.4"/></g><circle cx="10" cy="10" r="2.6" fill="#C97F2B"/></svg>',
+  '<svg viewBox="0 0 20 20" width="__S__"><g fill="#F6F1E2"><circle cx="10" cy="5" r="3.6"/><circle cx="15" cy="10" r="3.6"/><circle cx="10" cy="15" r="3.6"/><circle cx="5" cy="10" r="3.6"/></g><circle cx="10" cy="10" r="2.2" fill="#E4D3B0"/></svg>',
+  '<svg viewBox="0 0 20 20" width="__S__"><g fill="#A5AECB"><circle cx="10" cy="5" r="3.4"/><circle cx="14" cy="11" r="3.4"/><circle cx="8" cy="14" r="3.4"/><circle cx="5" cy="8" r="3.4"/></g><circle cx="9.5" cy="9.5" r="2" fill="#F4D35E"/></svg>',
+  '<svg viewBox="0 0 20 26" width="__S__"><path d="M10 1 q9 8 0 24 q-9 -16 0 -24z" fill="#E8C9C0" stroke="#C99A92" stroke-width=".8"/></svg>',
+  '<svg viewBox="0 0 22 16" width="__S__"><path d="M2 14 q8 -14 18 -12 q-6 12 -18 12z" fill="#9CAB86"/></svg>'
+];
+(function seedOpeningFloaters(){
+  const host=document.getElementById('opening');
+  for(let i=0;i<14;i++){
+    const d=document.createElement('div'); d.className='floater';
+    const size=10+Math.random()*12;
+    d.innerHTML=FLOWER_SVGS[Math.floor(Math.random()*FLOWER_SVGS.length)].replace('__S__',size);
+    d.style.left=Math.random()*96+'%'; d.style.top=Math.random()*92+'%';
+    d.style.setProperty('--dx',(Math.random()*46-23)+'px');
+    d.style.setProperty('--dy',(Math.random()*-40-8)+'px');
+    d.style.setProperty('--rot',(Math.random()*40-20)+'deg');
+    d.style.setProperty('--dur',(11+Math.random()*12)+'s');
+    d.style.setProperty('--del',(-Math.random()*12)+'s');
+    host.appendChild(d);
+  }
+})();
+
+/* ============ opening sequence ============ */
+const opening = document.getElementById('opening');
+document.body.style.overflow = 'hidden';
+function enterGarden(instant){
+  if (opening.classList.contains('opened')) return;
+  opening.classList.add('opened');
+  releaseButterflies(4, innerWidth/2, innerHeight/2);
+  setTimeout(()=>{
+    opening.classList.add('gone');
+    document.body.style.overflow = '';
+    ScrollTrigger.refresh();
+    document.querySelectorAll('#hero .rv').forEach(el=>el.classList.add('on'));
+    setTimeout(()=>opening.remove(), 1500);
+  }, instant ? 200 : 3300);
+}
+document.getElementById('sealBtn').addEventListener('click', ()=>enterGarden(false));
+document.getElementById('skipOpen').addEventListener('click', ()=>enterGarden(true));
+if (reduceMotion) enterGarden(true);
+
+/* ============ scroll reveals ============ */
+const io = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('on'); io.unobserve(e.target);} });
+},{threshold:.18});
+document.querySelectorAll('.rv').forEach(el=>{ if(!el.closest('#hero')) io.observe(el); });
+
+/* ============ day-night controller ============ */
+const SKY_STOPS = [
+  {sel:'#hero',   c1:'#F3EEE4', c2:'#E9E4D6', rays:.85, mode:'flower'},
+  {sel:'#reveal', c1:'#F7F2E9', c2:'#EFE3C8', rays:.9,  mode:'flower'},
+  {sel:'#events', c1:'#F3E6D2', c2:'#E8CDB4', rays:.55, mode:'flower'},
+  {sel:'#footer', c1:'#222E27', c2:'#1A241F', rays:0,   mode:'firefly'}
+];
+const hexLerp=(a,b,t)=>{
+  const pa=[1,3,5].map(i=>parseInt(a.substr(i,2),16)), pb=[1,3,5].map(i=>parseInt(b.substr(i,2),16));
+  return '#'+pa.map((v,i)=>Math.round(v+(pb[i]-v)*t).toString(16).padStart(2,'0')).join('');
+};
+let stops=[], particleMode='flower';
+function measureStops(){
+  stops = SKY_STOPS.map(s=>{
+    const el=document.querySelector(s.sel);
+    return {...s, y: el ? el.offsetTop + el.offsetHeight*0.35 : 0};
+  }).sort((a,b)=>a.y-b.y);
+}
+function updateSky(){
+  if(!stops.length) return;
+  const y=scrollY + innerHeight*0.5;
+  let i=0;
+  while(i<stops.length-1 && y>stops[i+1].y) i++;
+  const a=stops[i], b=stops[Math.min(i+1,stops.length-1)];
+  const t=b.y===a.y?0:Math.min(1,Math.max(0,(y-a.y)/(b.y-a.y)));
+  document.documentElement.style.setProperty('--sky1',hexLerp(a.c1,b.c1,t));
+  document.documentElement.style.setProperty('--sky2',hexLerp(a.c2,b.c2,t));
+  document.getElementById('rays').style.opacity = a.rays+(b.rays-a.rays)*t;
+  particleMode = t>.5 ? b.mode : a.mode;
+}
+addEventListener('scroll',()=>requestAnimationFrame(updateSky),{passive:true});
+addEventListener('resize',()=>{measureStops();updateSky();});
+addEventListener('load',()=>{measureStops();updateSky();});
+setTimeout(()=>{measureStops();updateSky();},600);
+
+/* ============ living layer — flowers of many kinds + fireflies ============ */
+const fx=document.getElementById('fx'), fctx=fx.getContext('2d');
+let P=[], MAXP = isTouch?42:80, W,H,DPR;
+function sizeFx(){ DPR=Math.min(devicePixelRatio||1,2); W=fx.width=innerWidth*DPR; H=fx.height=innerHeight*DPR; fx.style.width=innerWidth+'px'; fx.style.height=innerHeight+'px'; }
+sizeFx(); addEventListener('resize',sizeFx);
+/* flower kinds: 0 blush petal · 1 marigold · 2 jasmine · 3 lavender petal · 4 leaf */
+const FKIND=[
+  {draw:(c,s)=>{c.fillStyle='#E8C9C0';petal(c,s)}},
+  {draw:(c,s)=>{c.fillStyle='#E3A93C';flower5(c,s,'#C97F2B')}},
+  {draw:(c,s)=>{c.fillStyle='#F6F1E2';flower4(c,s,'#E4D3B0')}},
+  {draw:(c,s)=>{c.fillStyle='#B9AECB';petal(c,s)}},
+  {draw:(c,s)=>{c.fillStyle='#A8B39A';leaf(c,s)}}
+];
+function petal(c,s){c.beginPath();c.moveTo(0,-s);c.quadraticCurveTo(s,0,0,s);c.quadraticCurveTo(-s,0,0,-s);c.fill();}
+function flower5(c,s,core){for(let k=0;k<5;k++){const a=k/5*6.283;c.beginPath();c.arc(Math.cos(a)*s*.7,Math.sin(a)*s*.7,s*.5,0,7);c.fill();}c.save();c.fillStyle=core;c.beginPath();c.arc(0,0,s*.34,0,7);c.fill();c.restore();}
+function flower4(c,s,core){for(let k=0;k<4;k++){const a=k/4*6.283;c.beginPath();c.arc(Math.cos(a)*s*.62,Math.sin(a)*s*.62,s*.48,0,7);c.fill();}c.save();c.fillStyle=core;c.beginPath();c.arc(0,0,s*.3,0,7);c.fill();c.restore();}
+function leaf(c,s){c.beginPath();c.moveTo(-s,-s*.2);c.quadraticCurveTo(0,-s,s,-s*.1);c.quadraticCurveTo(0,s*.5,-s,-s*.2);c.fill();}
+function spawn(){
+  const r=Math.random;
+  if(particleMode==='flower')
+    return {m:'flower',k:Math.floor(r()*FKIND.length),x:r()*W,y:-24,vx:(r()-.5)*.4*DPR,vy:(.24+r()*.46)*DPR,
+      s:(2.6+r()*3.6)*DPR,a:.3+r()*.45,rot:r()*6.28,vr:(r()-.5)*.02,ph:r()*6.28,life:1};
+  return {m:'firefly',x:r()*W,y:r()*H,vx:(r()-.5)*.3*DPR,vy:(r()-.5)*.24*DPR,s:(1.2+r()*1.8)*DPR,a:0,ta:.35+r()*.55,ph:r()*6.28,life:1,t:0};
+}
+function fxLoop(){
+  fctx.clearRect(0,0,W,H);
+  while(P.length<MAXP) P.push(spawn());
+  P=P.filter(p=>{
+    p.ph+=.01;
+    if(p.m==='flower'){
+      p.x+=p.vx+Math.sin(p.ph)*.5*DPR; p.y+=p.vy; p.rot+=p.vr;
+      fctx.save(); fctx.translate(p.x,p.y); fctx.rotate(p.rot); fctx.globalAlpha=p.a;
+      FKIND[p.k].draw(fctx,p.s); fctx.restore();
+      return p.y<H+30;
+    }
+    p.t+=.016; p.x+=p.vx+Math.sin(p.ph*2)*.3*DPR; p.y+=p.vy+Math.cos(p.ph*1.7)*.3*DPR;
+    const glow=(Math.sin(p.t*2+p.ph)+1)/2;
+    fctx.globalAlpha=p.ta*glow; fctx.fillStyle='#F6E7BF';
+    fctx.shadowColor='#F6E7BF'; fctx.shadowBlur=8*DPR;
+    fctx.beginPath(); fctx.arc(p.x,p.y,p.s,0,7); fctx.fill(); fctx.shadowBlur=0;
+    return p.x>-20&&p.x<W+20&&p.y>-20&&p.y<H+20&&p.t<14;
+  });
+  if(P.length&&P[0].m!==(particleMode==='flower'?'flower':'firefly')&&Math.random()<.25) P.shift();
+  requestAnimationFrame(fxLoop);
+}
+if(!reduceMotion) fxLoop();
+
+/* small butterflies drifting */
+function releaseButterflies(n,x,y){ if(reduceMotion) return; for(let i=0;i<n;i++) makeButterfly(x,y,true); }
+function makeButterfly(x,y,burst){
+  const b=document.createElement('div'); b.className='butterfly';
+  const size=10+Math.random()*10;
+  const hues=['#C99A92','#C7A96B','#A5AECB','#D06A7E'];
+  const hue=hues[Math.floor(Math.random()*hues.length)];
+  b.style.width=size+'px';
+  b.innerHTML=`<svg viewBox="0 0 26 20"><g class="wing" style="transform-origin:60% 50%"><path d="M12 10 Q2 0 1 7 Q1 14 12 10z" fill="${hue}" opacity=".9"/></g><g class="wing" style="transform-origin:40% 50%;animation-delay:.1s"><path d="M14 10 Q24 0 25 7 Q25 14 14 10z" fill="${hue}" opacity=".9"/></g><ellipse cx="13" cy="10" rx="1.3" ry="4" fill="#4A4238"/></svg>`;
+  document.body.appendChild(b);
+  const sx=x??(Math.random()*innerWidth), sy=y??(innerHeight*0.25+Math.random()*innerHeight*0.5);
+  const dx=burst?(Math.random()-.5)*innerWidth*.9:(Math.random()<.5?-1:1)*(innerWidth+80);
+  const rise=60+Math.random()*160;
+  const obj={t:0};
+  gsap.set(b,{x:sx,y:sy});
+  gsap.to(obj,{t:1,duration:8+Math.random()*7,ease:'sine.inOut',
+    onUpdate:()=>{ gsap.set(b,{x:sx+dx*obj.t, y:sy - obj.t*rise - Math.sin(obj.t*Math.PI*3.2)*36}); },
+    onComplete:()=>b.remove()});
+}
+if(!reduceMotion) setInterval(()=>{
+  const n=document.querySelectorAll('.butterfly').length;
+  if(n<(isTouch?3:5)&&Math.random()<.65) makeButterfly();
+},3800);
+setTimeout(()=>{ if(!reduceMotion){makeButterfly();makeButterfly();} },2500);
+
+/* ============ countdowns ============ */
+const target=new Date(SITE_CONFIG.weddingISO).getTime();
+function tickCd(){
+  let d=Math.max(0,target-Date.now());
+  const s=Math.floor(d/1000);
+  document.getElementById('cd-d').textContent=Math.floor(s/86400);
+  document.getElementById('cd-h').textContent=String(Math.floor(s%86400/3600)).padStart(2,'0');
+  document.getElementById('cd-m').textContent=String(Math.floor(s%3600/60)).padStart(2,'0');
+  document.getElementById('cd-s').textContent=String(s%60).padStart(2,'0');
+}
+tickCd(); setInterval(tickCd,1000);
+/* per-event day chips */
+document.querySelectorAll('[data-timer]').forEach(chip=>{
+  const ev=SITE_CONFIG.events[+chip.dataset.timer];
+  const days=Math.ceil((new Date(ev.iso).getTime()-Date.now())/86400000);
+  chip.innerHTML = days>1 ? `in <b>${days}</b> days` : days===1 ? 'tomorrow' : days===0 ? '<b>today</b> ✦' : 'celebrated ✦';
+});
+
+/* ============ mist reveal → celebration ============ */
+(function(){
+  const c=document.getElementById('mistCanvas'), ctx=c.getContext('2d');
+  const stage=c.parentElement; let cleared=false, wiped=0;
+  function paintMist(){
+    const r=stage.getBoundingClientRect();
+    c.width=r.width*2; c.height=r.height*2; ctx.scale(2,2);
+    const g=ctx.createLinearGradient(0,0,r.width,r.height);
+    g.addColorStop(0,'#EFEAD9'); g.addColorStop(.5,'#E7E2D0'); g.addColorStop(1,'#EDE6D2');
+    ctx.fillStyle=g; ctx.fillRect(0,0,r.width,r.height);
+    for(let i=0;i<26;i++){
+      ctx.globalAlpha=.12+Math.random()*.14; ctx.fillStyle='#F7F3E6';
+      ctx.beginPath(); ctx.ellipse(Math.random()*r.width,Math.random()*r.height,40+Math.random()*70,14+Math.random()*22,Math.random(),0,7); ctx.fill();
+    }
+    ctx.globalAlpha=.9; ctx.fillStyle='#8b8674';
+    ctx.font='italic 15px Cormorant Garamond,serif'; ctx.textAlign='center';
+    ctx.fillText('· mist ·', r.width/2, r.height/2);
+    ctx.globalAlpha=1; ctx.globalCompositeOperation='destination-out';
+  }
+  new ResizeObserver(()=>{ if(!cleared){ctx.globalCompositeOperation='source-over';paintMist();} }).observe(stage);
+  function wipe(e){
+    if(cleared) return;
+    const r=c.getBoundingClientRect();
+    const pts = e.touches?[...e.touches]:[e];
+    pts.forEach(p=>{
+      const x=(p.clientX-r.left), y=(p.clientY-r.top);
+      const g=ctx.createRadialGradient(x,y,4,x,y,42);
+      g.addColorStop(0,'rgba(0,0,0,.9)'); g.addColorStop(1,'rgba(0,0,0,0)');
+      ctx.fillStyle=g; ctx.beginPath(); ctx.arc(x,y,42,0,7); ctx.fill();
+    });
+    wiped++;
+    if(wiped>36){ cleared=true;
+      gsap.to(c,{opacity:0,duration:1.2,ease:'power2.out',onComplete:()=>c.remove()});
+      document.getElementById('revealHint').textContent='— shubh vivah! the date is set —';
+      celebration(stage);
+    }
+  }
+  c.addEventListener('pointermove',e=>{ if(e.buttons||e.pointerType==='touch') wipe(e); });
+  c.addEventListener('pointerdown',wipe);
+  c.addEventListener('touchmove',e=>{e.preventDefault();wipe(e);},{passive:false});
+  if(reduceMotion){ c.remove(); }
+})();
+
+/* celebration burst — flowers + gold sparks + butterflies */
+function celebration(el){
+  if(reduceMotion) return;
+  const r=el.getBoundingClientRect();
+  const cx=(r.left+r.width/2)*DPR, cy=Math.max(120,Math.min(H-120,(r.top+r.height/2)*DPR));
+  for(let i=0;i<56;i++){
+    const a=Math.random()*6.283, v=(1.4+Math.random()*3.4)*DPR;
+    P.push({m:'flower',k:Math.floor(Math.random()*FKIND.length),x:cx,y:cy,
+      vx:Math.cos(a)*v,vy:Math.sin(a)*v-1.6*DPR,s:(2.6+Math.random()*3.8)*DPR,
+      a:.85,rot:Math.random()*6.28,vr:(Math.random()-.5)*.12,ph:Math.random()*6.28,life:1});
+  }
+  for(let i=0;i<22;i++){
+    P.push({m:'firefly',x:cx,y:cy,vx:(Math.random()-.5)*2.4*DPR,vy:(Math.random()-.7)*2.2*DPR,
+      s:(1+Math.random()*1.6)*DPR,a:0,ta:.8,ph:Math.random()*6.28,life:1,t:11});
+  }
+  releaseButterflies(3,r.left+r.width/2,r.top+60);
+}
+
+/* ============ events: unfold + tilt + ICS ============ */
+document.querySelectorAll('.eventCard').forEach(card=>{
+  if(!reduceMotion){
+    gsap.from(card,{rotateX:-14,y:80,opacity:0,transformOrigin:'top center',duration:1.2,ease:'power3.out',
+      scrollTrigger:{trigger:card,start:'top 82%'}});
+    card.addEventListener('pointermove',e=>{
+      if(isTouch) return;
+      const r=card.getBoundingClientRect();
+      const rx=((e.clientY-r.top)/r.height-.5)*-3.4, ry=((e.clientX-r.left)/r.width-.5)*3.4;
+      gsap.to(card,{rotateX:rx,rotateY:ry,duration:.5,ease:'power2.out'});
+    });
+    card.addEventListener('pointerleave',()=>gsap.to(card,{rotateX:0,rotateY:0,duration:.9,ease:'power3.out'}));
+  }
+});
+document.querySelectorAll('[data-ics]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    e.preventDefault();
+    const ev=SITE_CONFIG.events[+a.dataset.ics];
+    const ics=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//PaintedGarden//EN','BEGIN:VEVENT',
+      'UID:'+Date.now()+'@paintedgarden','DTSTART;TZID=Asia/Kolkata:'+ev.start,'DTEND;TZID=Asia/Kolkata:'+ev.end,
+      'SUMMARY:'+ev.title,'LOCATION:'+ev.loc,'END:VEVENT','END:VCALENDAR'].join('\r\n');
+    const url=URL.createObjectURL(new Blob([ics],{type:'text/calendar'}));
+    const l=document.createElement('a'); l.href=url; l.download=ev.title.replace(/\W+/g,'-')+'.ics';
+    document.body.appendChild(l); l.click(); l.remove(); URL.revokeObjectURL(url);
+  });
+});
+
+/* ============ footer ============ */
+(function(){
+  const s=document.getElementById('stars');
+  for(let i=0;i<40;i++){
+    const d=document.createElement('i');
+    d.style.left=Math.random()*100+'%'; d.style.top=Math.random()*70+'%';
+    d.style.animationDelay=(Math.random()*4)+'s';
+    d.style.animationDuration=(3+Math.random()*4)+'s';
+    s.appendChild(d);
+  }
+})();
+new IntersectionObserver((es,ob)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('write');ob.unobserve(e.target);}})},{threshold:.6})
+  .observe(document.getElementById('signature'));
+
+/* ============ ambient audio (generative) ============ */
+let audio={ctx:null,on:false};
+const audioBtn=document.getElementById('audioBtn');
+function buildAudio(){
+  const C=new (window.AudioContext||window.webkitAudioContext)();
+  const master=C.createGain(); master.gain.value=0; master.connect(C.destination);
+  const lp=C.createBiquadFilter(); lp.type='lowpass'; lp.frequency.value=520; lp.connect(master);
+  [[220,.5],[329.63,.32],[261.63,.22]].forEach(([f,g],i)=>{
+    const o=C.createOscillator(); o.type='triangle'; o.frequency.value=f; o.detune.value=(i-1)*4;
+    const og=C.createGain(); og.gain.value=g*.06; o.connect(og); og.connect(lp); o.start();
+    const lfo=C.createOscillator(); lfo.frequency.value=.06+i*.02;
+    const lg=C.createGain(); lg.gain.value=g*.03; lfo.connect(lg); lg.connect(og.gain); lfo.start();
+  });
+  function bell(){
+    if(!audio.on) return;
+    const o=C.createOscillator(); o.type='sine';
+    o.frequency.value=[523.25,659.25,783.99][Math.floor(Math.random()*3)];
+    const g=C.createGain(); g.gain.setValueAtTime(.0001,C.currentTime);
+    g.gain.exponentialRampToValueAtTime(.035,C.currentTime+.02);
+    g.gain.exponentialRampToValueAtTime(.0001,C.currentTime+3.4);
+    o.connect(g); g.connect(master); o.start(); o.stop(C.currentTime+3.6);
+    setTimeout(bell,7000+Math.random()*7000);
+  }
+  audio.ctx=C; audio.master=master; audio.bell=bell;
+}
+audioBtn.addEventListener('click',()=>{
+  if(!audio.ctx) buildAudio();
+  audio.on=!audio.on;
+  audioBtn.classList.toggle('playing',audio.on);
+  audioBtn.setAttribute('aria-pressed',String(audio.on));
+  audio.ctx.resume();
+  gsap.to(audio.master.gain,{value:audio.on?1:0,duration:2});
+  if(audio.on) audio.bell();
+});
+
+/* ============ cursor + sparkle trail ============ */
+if(!isTouch && !reduceMotion){
+  const cur=document.getElementById('cursor');
+  let mx=0,my=0,cx=0,cy=0,lastSpark=0;
+  addEventListener('pointermove',e=>{
+    mx=e.clientX;my=e.clientY;
+    const now=performance.now();
+    if(now-lastSpark>80){ lastSpark=now;
+      P.push({m:'firefly',x:mx*DPR,y:my*DPR,vx:(Math.random()-.5)*.6*DPR,vy:(-.2-Math.random()*.5)*DPR,
+        s:(0.8+Math.random())*DPR,a:0,ta:.5,ph:Math.random()*6.28,life:1,t:12.6});
+    }
+  });
+  (function follow(){ cx+=(mx-cx)*.22; cy+=(my-cy)*.22;
+    cur.style.left=cx+'px'; cur.style.top=cy+'px'; requestAnimationFrame(follow); })();
+  document.querySelectorAll('a,button,select,input,textarea').forEach(el=>{
+    el.addEventListener('pointerenter',()=>cur.classList.add('big'));
+    el.addEventListener('pointerleave',()=>cur.classList.remove('big'));
+  });
+} else {
+  document.getElementById('cursor').remove();
+}
+</script>
+</body>
+</html>
