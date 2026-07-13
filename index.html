@@ -286,17 +286,36 @@
       max-width: 100%;
       height: auto;
       display: block;
-      align-self: end;
       z-index: 0
     }
 
-    /* mobile: bg uses only up to text completion, date section sits below it */
+    #hero .bg-bottom {
+      align-self: end;
+    }
+
+    #hero .bg-top {
+      align-self: start;
+      display: none; /* hidden on desktop */
+    }
+
+    /* mobile: split the bg to show top trees and bottom art without side cropping, fading them smoothly into the center */
     @media(max-width:760px) {
-      #hero .bg {
-        height: calc(100% - 400px); /* background image covers text + gap, ends before the date section */
-        align-self: start;
+      #hero .bg-top {
+        display: block;
+        height: 380px; /* shows top greenery */
         object-fit: cover;
-        object-position: center bottom
+        object-position: top center;
+        -webkit-mask-image: linear-gradient(to bottom, black 65%, transparent 100%);
+        mask-image: linear-gradient(to bottom, black 65%, transparent 100%)
+      }
+
+      #hero .bg-bottom {
+        height: 360px; /* shows bottom art */
+        margin-bottom: 390px; /* stops precisely before the date section */
+        object-fit: cover;
+        object-position: bottom center;
+        -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 35%);
+        mask-image: linear-gradient(to bottom, transparent 0%, black 35%)
       }
 
       .heroIn {
@@ -304,7 +323,7 @@
       }
 
       .heroScratch {
-        margin-top: 260px !important; /* creates a safe gap for the artwork (carpet/lanterns) to render without overlapping the text */
+        margin-top: 280px !important; /* creates a safe gap for the artwork to render without overlapping the text */
       }
     }
 
@@ -834,7 +853,8 @@
   <section id="hero">
     <!-- Client-supplied painted backdrop.
        Save your background image as:  assets/hero-bg.png  (inside this folder) -->
-    <img class="bg" src="assets/hero-bg.png" alt="" onerror="this.style.display='none'">
+    <img class="bg bg-top" src="assets/hero-bg.png" alt="" onerror="this.style.display='none'">
+    <img class="bg bg-bottom" src="assets/hero-bg.png" alt="" onerror="this.style.display='none'">
     <div class="heroIn">
       <img class="ganesh rv" src="https://rushikesh-prajakta.invitationmedia.in/assets/ganesh-idol-TubyYjSJ.png"
         alt="Lord Ganesha">
