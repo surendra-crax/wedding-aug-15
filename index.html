@@ -290,17 +290,21 @@
       z-index: 0
     }
 
-    /* mobile: content grows taller than the artwork — cover the full section instead of leaving a seam */
+    /* mobile: bg uses only up to text completion, date section sits below it */
     @media(max-width:760px) {
       #hero .bg {
-        height: 100%;
-        align-self: stretch;
+        height: calc(100% - 400px); /* background image covers text + gap, ends before the date section */
+        align-self: start;
         object-fit: cover;
         object-position: center bottom
       }
 
       .heroIn {
-        padding-bottom: 36% !important
+        padding-bottom: 2.5rem !important /* removes the massive 36% padding */
+      }
+
+      .heroScratch {
+        margin-top: 260px !important; /* creates a safe gap for the artwork (carpet/lanterns) to render without overlapping the text */
       }
     }
 
