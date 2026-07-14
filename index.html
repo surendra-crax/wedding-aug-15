@@ -295,14 +295,16 @@
 
     #hero .bg-top {
       align-self: start;
-      display: none; /* hidden on desktop */
+      display: none;
+      /* hidden on desktop */
     }
 
     /* mobile: split the bg to show top trees and bottom art without side cropping, fading them smoothly into the center */
     @media(max-width:760px) {
       #hero .bg-top {
         display: block;
-        height: 380px; /* shows top greenery */
+        height: 380px;
+        /* shows top greenery */
         object-fit: cover;
         object-position: top center;
         -webkit-mask-image: linear-gradient(to bottom, black 65%, transparent 100%);
@@ -310,8 +312,10 @@
       }
 
       #hero .bg-bottom {
-        height: 360px; /* shows bottom art */
-        margin-bottom: 390px; /* stops precisely before the date section */
+        height: 360px;
+        /* shows bottom art */
+        margin-bottom: 390px;
+        /* stops precisely before the date section */
         object-fit: cover;
         object-position: bottom center;
         -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 35%);
@@ -319,11 +323,13 @@
       }
 
       .heroIn {
-        padding-bottom: 2.5rem !important /* removes the massive 36% padding */
+        padding-bottom: 2.5rem !important
+          /* removes the massive 36% padding */
       }
 
       .heroScratch {
-        margin-top: 280px !important; /* creates a safe gap for the artwork to render without overlapping the text */
+        margin-top: 280px !important;
+        /* creates a safe gap for the artwork to render without overlapping the text */
       }
     }
 
@@ -596,7 +602,7 @@
       text-shadow: 0 1px 8px rgba(0, 0, 0, .55)
     }
 
-    .evCard .in > *:not(.coupleArt) {
+    .evCard .in>*:not(.coupleArt) {
       position: relative;
       z-index: 10;
     }
@@ -665,12 +671,17 @@
     .coupleArt {
       width: 100%;
       max-width: 320px;
-      height: auto;
+      height: 95%;
       object-fit: contain;
-      margin: auto auto 0;
+      object-position: bottom center;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      margin: 0 auto;
       filter: drop-shadow(0 4px 8px rgba(0, 0, 0, .3));
-      position: relative;
       z-index: 1;
+      opacity: 0.55;
     }
 
     /* ============ NOTE + FAMILIES + VENUE ============ */
@@ -904,8 +915,8 @@
       <div class="evGrid">
 
         <article class="evCard rv" aria-label="Mehendi">
-          <img class="bgi" src="https://rushikesh-prajakta.invitationmedia.in/assets/bg-gavdev-groom-new-6jrcX2vp.jpg" alt=""
-            loading="lazy">
+          <img class="bgi" src="https://rushikesh-prajakta.invitationmedia.in/assets/bg-gavdev-groom-new-6jrcX2vp.jpg"
+            alt="" loading="lazy">
           <div class="shade"></div>
           <div class="in">
             <h3 class="evName">Mehendi</h3>
@@ -914,13 +925,12 @@
             <div class="evField"><b>Date</b><span>THU · August 13, 2026</span></div>
             <div class="evField"><b>Time</b><span>07:00 PM onwards</span></div>
             <div class="evField"><b>Venue</b><span>CM Convention, Tanuku</span></div>
-            <img src="assets/mehandi.png" class="coupleArt" style="transform: scale(1.8); transform-origin: bottom center;" alt="">
+            <img src="assets/mehandi.png" class="coupleArt" alt="">
           </div>
         </article>
 
         <article class="evCard rv" aria-label="Pellikoduku and Pellikuthuru">
-          <img class="bgi" src="assets/pellikoduku-bg.jpeg"
-            alt="" loading="lazy">
+          <img class="bgi" src="assets/pellikoduku-bg.jpeg" alt="" loading="lazy">
           <div class="shade"></div>
           <div class="in">
             <h3 class="evName" style="font-size:clamp(1.9rem,4.5vw,2.5rem)">Pellikoduku &amp; Pellikuthuru</h3>
@@ -945,7 +955,7 @@
             <div class="evField"><b>Time</b><span>7:30 – 11:30 AM</span></div>
             <div class="evField"><b>Venue</b><span>CM Convention, Tanuku</span></div>
             <!-- <div class="evField"><b>Dress</b><span>🌸 floral-printed / pastel colour attire</span></div> -->
-            <img src="assets/haldi.png" class="coupleArt" style="transform: scale(1.8); transform-origin: bottom center; opacity: 0.6;" alt="">
+            <img src="assets/haldi.png" class="coupleArt" alt="">
           </div>
         </article>
 
@@ -960,13 +970,12 @@
             <div class="evField"><b>Date</b><span>FRI · August 14, 2026</span></div>
             <div class="evField"><b>Time</b><span>06:00 PM onwards</span></div>
             <div class="evField"><b>Venue</b><span>CM Convention, Tanuku</span></div>
-            <img src="assets/sangeet.png" class="coupleArt" style="transform: scale(1.8); transform-origin: bottom center; opacity: 0.6;" alt="">
+            <img src="assets/sangeet.png" class="coupleArt" alt="">
           </div>
         </article>
 
         <article class="evCard rv" aria-label="Muhurtham" data-ev="muhurtham">
-          <img class="bgi" src="assets/muhurtam.jpeg"
-            alt="" loading="lazy">
+          <img class="bgi" src="assets/muhurtam.jpeg" alt="" loading="lazy">
           <div class="shade"></div>
           <div class="in">
             <h3 class="evName">Muhurtham</h3>
