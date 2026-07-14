@@ -596,6 +596,11 @@
       text-shadow: 0 1px 8px rgba(0, 0, 0, .55)
     }
 
+    .evCard .in > *:not(.coupleArt) {
+      position: relative;
+      z-index: 10;
+    }
+
     .evName {
       font-family: var(--script);
       font-size: clamp(2.4rem, 6vw, 3.2rem);
@@ -659,11 +664,13 @@
 
     .coupleArt {
       width: 100%;
-      max-width: 220px;
+      max-width: 320px;
       height: auto;
       object-fit: contain;
       margin: auto auto 0;
-      filter: drop-shadow(0 4px 8px rgba(0, 0, 0, .3))
+      filter: drop-shadow(0 4px 8px rgba(0, 0, 0, .3));
+      position: relative;
+      z-index: 1;
     }
 
     /* ============ NOTE + FAMILIES + VENUE ============ */
@@ -907,7 +914,7 @@
             <div class="evField"><b>Date</b><span>THU · August 13, 2026</span></div>
             <div class="evField"><b>Time</b><span>07:00 PM onwards</span></div>
             <div class="evField"><b>Venue</b><span>CM Convention, Tanuku</span></div>
-            <img src="characters/couple-varmala-DBCWuEXF.png" class="coupleArt" alt="">
+            <img src="assets/mehandi.png" class="coupleArt" style="transform: scale(1.8); transform-origin: bottom center;" alt="">
           </div>
         </article>
 
@@ -938,7 +945,7 @@
             <div class="evField"><b>Time</b><span>7:30 – 11:30 AM</span></div>
             <div class="evField"><b>Venue</b><span>CM Convention, Tanuku</span></div>
             <!-- <div class="evField"><b>Dress</b><span>🌸 floral-printed / pastel colour attire</span></div> -->
-            <img src="characters/couple-haldi-CsWjfUdv.png" class="coupleArt" alt="">
+            <img src="assets/haldi.png" class="coupleArt" style="transform: scale(1.8); transform-origin: bottom center; opacity: 0.6;" alt="">
           </div>
         </article>
 
@@ -953,12 +960,12 @@
             <div class="evField"><b>Date</b><span>FRI · August 14, 2026</span></div>
             <div class="evField"><b>Time</b><span>06:00 PM onwards</span></div>
             <div class="evField"><b>Venue</b><span>CM Convention, Tanuku</span></div>
-            <img src="characters/couple-sangeet-D3VSf4cb.png" class="coupleArt" alt="">
+            <img src="assets/sangeet.png" class="coupleArt" style="transform: scale(1.8); transform-origin: bottom center; opacity: 0.6;" alt="">
           </div>
         </article>
 
         <article class="evCard rv" aria-label="Muhurtham" data-ev="muhurtham">
-          <img class="bgi" src="https://rushikesh-prajakta.invitationmedia.in/assets/bg-sapthapadi-new-DwAlBfyG.jpg"
+          <img class="bgi" src="assets/muhurtam.jpeg"
             alt="" loading="lazy">
           <div class="shade"></div>
           <div class="in">
@@ -968,7 +975,6 @@
             <div class="evField"><b>Date</b><span>SAT · August 15, 2026</span></div>
             <div class="evField"><b>Time</b><span>11:53 AM</span></div>
             <div class="evField"><b>Venue</b><span>CM Convention, Tanuku</span></div>
-            <img src="characters/couple-sapthapadi-Zvu2FEVx.png" class="coupleArt" alt="">
           </div>
         </article>
 
